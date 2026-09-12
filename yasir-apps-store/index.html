@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Yasir Apps — a clean, responsive app store for apps published by Yasir. Explore Yasir Capcut and download its current release.">
+  <meta name="keywords" content="Yasir Apps, Yasir Capcut, Yasir apps, Android apps, APK download">
+  <meta name="author" content="Yasir">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yasir Apps — App Store">
+  <meta property="og:description" content="Explore apps published by Yasir. Discover Yasir Capcut and its current release.">
+  <meta property="og:url" content="https://yasirrahim12.github.io/yasir-apps/">
+  <meta property="og:site_name" content="Yasir Apps">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Yasir Apps — App Store">
+  <meta name="twitter:description" content="Explore apps published by Yasir.">
+  <link rel="canonical" href="https://yasirrahim12.github.io/yasir-apps/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <title>Yasir Apps — App Store</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"] },
+          boxShadow: {
+            glow: "0 0 70px rgba(255,255,255,.08)",
+            card: "0 20px 70px rgba(0,0,0,.28)"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="min-h-screen bg-[#070707] text-white antialiased selection:bg-white selection:text-black">
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="site-header" id="top">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+      <a href="#top" class="brand" aria-label="Yasir Apps home">
+        <span>Yasir</span><em>Apps</em>
+      </a>
+      <nav class="hidden items-center gap-7 text-sm text-zinc-400 md:flex" aria-label="Primary navigation">
+        <a class="nav-link" href="#apps">Apps</a>
+        <a class="nav-link" href="#about">About</a>
+      </nav>
+      <a href="#apps" class="header-button">Explore apps</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="mx-auto max-w-7xl px-5 pb-16 pt-16 sm:px-8 sm:pt-24">
+      <div class="hero-shell">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="live-dot"></span>YASIR APPS STORE</div>
+          <h1 class="mt-6 text-5xl font-black tracking-[-0.055em] sm:text-7xl lg:text-8xl">
+            Your apps.<br><span class="muted-gradient">One place.</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
+            A focused home for apps published by Yasir, designed to stay fast, clean, mobile-friendly, and ready for future releases.
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#apps" class="primary-button">Browse apps <span>↓</span></a>
+            <a href="#about" class="secondary-button">About this store</a>
+          </div>
+        </div>
+
+        <div class="hero-preview reveal delayed" aria-hidden="true">
+          <div class="floating-orb"></div>
+          <div class="preview-device">
+            <div class="device-top"></div>
+            <div class="mini-label">YASIR APPS</div>
+            <div class="mini-title">Discover<br>something new.</div>
+            <div class="mini-card">
+              <div class="mini-icon">
+                <img src="assets/icons/yasir-capcut.svg" alt="">
+              </div>
+              <div>
+                <div class="text-sm font-bold">Yasir Capcut</div>
+                <div class="text-xs text-zinc-500">Video Editor · v1.0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apps" class="mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8">
+      <div class="mb-7 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <div class="section-kicker">APPLICATIONS</div>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Explore apps</h2>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <label class="search-wrap">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="Search apps…" autocomplete="off">
+          </label>
+          <div class="filter-row" role="group" aria-label="Filter apps">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="video">Video</button>
+            <button class="filter-button" data-filter="tools">Tools</button>
+            <button class="filter-button" data-filter="other">Other</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="appGrid" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <div class="mx-auto max-w-md">
+          <div class="empty-icon">⌕</div>
+          <h3 class="mt-4 text-lg font-bold">No apps found</h3>
+          <p class="mt-2 text-sm text-zinc-500">Try another search or filter.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="border-y border-white/[.06] bg-white/[.015]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+        <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+          <div>
+            <div class="section-kicker">ABOUT</div>
+            <h2 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Built for future releases.</h2>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <article class="info-card">
+              <span class="info-number">01</span>
+              <h3>Fast</h3>
+              <p>Lightweight interactions and restrained motion keep the page responsive.</p>
+            </article>
+            <article class="info-card">
+              <span class="info-number">02</span>
+              <h3>Scalable</h3>
+              <p>Apps are stored in one JavaScript catalog so future releases are simple to add.</p>
+            </article>
+            <article class="info-card">
+              <span class="info-number">03</span>
+              <h3>GitHub ready</h3>
+              <p>Designed for a root GitHub Pages deployment with a clean, predictable file structure.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto max-w-7xl px-5 py-8 text-center text-xs text-zinc-600 sm:px-8">
+    © <span id="year"></span> Yasir Apps
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
