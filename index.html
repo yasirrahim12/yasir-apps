@@ -1,266 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#070707">
-<title>Yasir Apps</title>
-<style>
-:root{
-  --bg:#060606;--panel:#0e0e0e;--panel2:#131313;--line:#242424;
-  --text:#fff;--muted:#999;--soft:#cfcfcf;--radius:22px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
-  color:var(--text);background:
-  radial-gradient(circle at 50% -15%,#292929 0,#111 26%,#060606 62%);
-  min-height:100vh;overflow-x:hidden;
-}
-a{text-decoration:none;color:inherit}
-button,input{font:inherit}
-.header{
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:18px;padding:17px 6%;
-  background:rgba(6,6,6,.8);backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.brand{font-size:21px;font-weight:900;letter-spacing:-.5px}
-.brand span{color:#888}
-.nav-links{display:flex;gap:10px;align-items:center}
-.nav-links a{padding:10px 14px;border:1px solid var(--line);border-radius:999px;color:#ddd;font-size:13px;font-weight:800}
-.nav-links a:hover{background:#fff;color:#000}
-.hero{max-width:1200px;margin:auto;padding:78px 6% 58px;text-align:center}
-.pill{display:inline-flex;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:#101010;color:#bdbdbd;font-size:11px;font-weight:900;letter-spacing:.14em}
-.hero h1{
-  margin:18px 0 13px;font-size:clamp(45px,7vw,82px);line-height:.95;letter-spacing:-4px
-}
-.gradient{
-  background:linear-gradient(90deg,#fff,#8e8e8e);
-  -webkit-background-clip:text;background-clip:text;color:transparent
-}
-.hero p{max-width:650px;margin:auto;color:#9a9a9a;line-height:1.7;font-size:16px}
-.controls{
-  max-width:1200px;margin:0 auto;padding:0 6% 28px;
-  display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap
-}
-.search{
-  flex:1;min-width:240px;max-width:500px;padding:14px 17px;border:1px solid var(--line);
-  border-radius:14px;background:#0c0c0c;color:#fff;outline:none
-}
-.search:focus{border-color:#555}
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter{
-  border:1px solid var(--line);background:#0d0d0d;color:#aaa;
-  border-radius:999px;padding:10px 14px;cursor:pointer;font-size:12px;font-weight:800
-}
-.filter.active,.filter:hover{background:#fff;color:#000;border-color:#fff}
-.grid{
-  max-width:1200px;margin:auto;padding:0 6% 80px;
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px
-}
-.card{
-  background:linear-gradient(145deg,#111,#0a0a0a);border:1px solid var(--line);
-  border-radius:var(--radius);padding:22px;transition:.25s;overflow:hidden;position:relative
-}
-.card:hover{transform:translateY(-5px);border-color:#3a3a3a;box-shadow:0 24px 70px rgba(0,0,0,.35)}
-.app-head{display:flex;align-items:center;gap:14px}
-.icon{
-  width:72px;height:72px;border-radius:18px;flex:none;display:grid;place-items:center;
-  background:#181818;border:1px solid #2a2a2a;overflow:hidden
-}
-.icon img{width:100%;height:100%;object-fit:cover}
-.icon svg{width:44px;height:44px}
-.app-name{font-size:20px;font-weight:900}
-.category{color:#777;font-size:12px;margin-top:3px}
-.desc{color:#959595;font-size:13px;line-height:1.6;margin:18px 0}
-.features{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
-.feature{font-size:11px;color:#cfcfcf;background:#171717;border:1px solid #262626;border-radius:999px;padding:7px 9px}
-.meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:#696969;font-size:11px}
-.download{
-  width:100%;display:flex;justify-content:center;align-items:center;gap:8px;
-  padding:14px 16px;border-radius:13px;background:#fff;color:#000;font-weight:900;font-size:13px;
-  transition:.2s
-}
-.download:hover{background:#e8e8e8;transform:translateY(-1px)}
-.empty{
-  grid-column:1/-1;text-align:center;padding:60px 20px;border:1px dashed #252525;
-  border-radius:20px;color:#777;display:none
-}
-.about{border-top:1px solid #151515;background:rgba(255,255,255,.01);padding:70px 6%}
-.about-wrap{max-width:1100px;margin:auto;text-align:center}
-.about h2{font-size:34px;margin-bottom:12px}.about p{max-width:700px;margin:auto;color:#8e8e8e;line-height:1.7}
-footer{padding:30px;text-align:center;color:#5f5f5f;border-top:1px solid #151515;font-size:12px}
-.toast{
-  position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);opacity:0;
-  background:#fff;color:#000;padding:13px 17px;border-radius:12px;font-weight:900;font-size:12px;
-  transition:.25s;z-index:200;pointer-events:none
-}
-.toast.show{transform:translate(-50%,0);opacity:1}
-@media(max-width:950px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:650px){
-  .header{padding:15px 5%}.nav-links a:first-child{display:none}
-  .hero{padding:58px 5% 45px}.hero h1{letter-spacing:-2.5px}
-  .controls,.grid{padding-left:5%;padding-right:5%}
-  .grid{grid-template-columns:1fr}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Yasir Apps — a clean, responsive app store for apps published by Yasir. Explore Yasir Capcut and download its current release.">
+  <meta name="keywords" content="Yasir Apps, Yasir Capcut, Yasir apps, Android apps, APK download">
+  <meta name="author" content="Yasir">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yasir Apps — App Store">
+  <meta property="og:description" content="Explore apps published by Yasir. Discover Yasir Capcut and its current release.">
+  <meta property="og:url" content="https://yasirrahim12.github.io/yasir-apps/">
+  <meta property="og:site_name" content="Yasir Apps">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Yasir Apps — App Store">
+  <meta name="twitter:description" content="Explore apps published by Yasir.">
+  <link rel="canonical" href="https://yasirrahim12.github.io/yasir-apps/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <title>Yasir Apps — App Store</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"] },
+          boxShadow: {
+            glow: "0 0 70px rgba(255,255,255,.08)",
+            card: "0 20px 70px rgba(0,0,0,.28)"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<header class="header">
-  <a class="brand" href="#">Yasir<span>Apps</span></a>
-  <nav class="nav-links">
-    <a href="#apps">Apps</a>
-    <a href="#about">About</a>
-  </nav>
-</header>
+<body class="min-h-screen bg-[#070707] text-white antialiased selection:bg-white selection:text-black">
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
 
-<section class="hero">
-  <span class="pill">YASIR APPS STORE</span>
-  <h1>My <span class="gradient">Apps.</span><br>One Place.</h1>
-  <p>Discover and download apps published by Yasir. The page is built so new apps can be added later without changing the design.</p>
-</section>
+  <header class="site-header" id="top">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+      <a href="#top" class="brand" aria-label="Yasir Apps home">
+        <span>Yasir</span><em>Apps</em>
+      </a>
+      <nav class="hidden items-center gap-7 text-sm text-zinc-400 md:flex" aria-label="Primary navigation">
+        <a class="nav-link" href="#apps">Apps</a>
+        <a class="nav-link" href="#about">About</a>
+      </nav>
+      <a href="#apps" class="header-button">Explore apps</a>
+    </div>
+  </header>
 
-<div class="controls" id="apps">
-  <input id="search" class="search" type="search" placeholder="Search apps..." aria-label="Search apps">
-  <div class="filters">
-    <button class="filter active" data-filter="all">All</button>
-    <button class="filter" data-filter="video">Video</button>
-    <button class="filter" data-filter="tools">Tools</button>
-    <button class="filter" data-filter="other">Other</button>
-  </div>
-</div>
+  <main>
+    <section class="mx-auto max-w-7xl px-5 pb-16 pt-16 sm:px-8 sm:pt-24">
+      <div class="hero-shell">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="live-dot"></span>YASIR APPS STORE</div>
+          <h1 class="mt-6 text-5xl font-black tracking-[-0.055em] sm:text-7xl lg:text-8xl">
+            Your apps.<br><span class="muted-gradient">One place.</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
+            A focused home for apps published by Yasir, designed to stay fast, clean, mobile-friendly, and ready for future releases.
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#apps" class="primary-button">Browse apps <span>↓</span></a>
+            <a href="#about" class="secondary-button">About this store</a>
+          </div>
+        </div>
 
-<main class="grid" id="grid"></main>
-<div class="empty" id="empty">No apps found.</div>
-
-<section class="about" id="about">
-  <div class="about-wrap">
-    <h2>More apps can come later.</h2>
-    <p>This homepage uses a simple app catalog. Each new app can have its own name, icon, category, description, features, version, and direct download link.</p>
-  </div>
-</section>
-
-<footer>© <span id="year"></span> Yasir Apps</footer>
-<div class="toast" id="toast">Opening download…</div>
-
-<script>
-/*
-  ADD NEW APPS HERE
-  Copy the Yasir Capcut object and change its values.
-*/
-const apps = [
-  {
-    name:"Yasir Capcut",
-    category:"video",
-    categoryLabel:"Video Editor",
-    version:"v1.0",
-    description:"A sleek mobile video-editing app landing page with quick APK access.",
-    features:["Full Pro Unlocked","No VPN Required","Latest Version","All Options Available"],
-    download:"https://github.com/yasirrahim12/yasir-apps/releases/download/v1.0/Yasir.apk",
-    icon:"capcut"
-  }
-
-  /*
-  Example for a future app:
-
-  ,{
-    name:"Yasir App 2",
-    category:"tools",
-    categoryLabel:"Tools",
-    version:"v1.0",
-    description:"Your next application description.",
-    features:["Feature 1","Feature 2"],
-    download:"YOUR-GITHUB-RELEASE-LINK",
-    icon:"default"
-  }
-  */
-];
-
-const grid=document.getElementById("grid");
-const empty=document.getElementById("empty");
-const search=document.getElementById("search");
-const toast=document.getElementById("toast");
-let activeFilter="all";
-
-function capcutIcon(){
-  return `
-  <svg viewBox="0 0 100 100" aria-label="CapCut style icon">
-    <rect x="5" y="5" width="90" height="90" rx="23" fill="#111"/>
-    <path d="M26 33h43M31 25l38 38M69 33L31 71M26 67h43" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
-  </svg>`;
-}
-
-function defaultIcon(){
-  return `
-  <svg viewBox="0 0 100 100">
-    <rect x="8" y="8" width="84" height="84" rx="22" fill="#1d1d1d"/>
-    <path d="M30 50h40M50 30v40" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
-  </svg>`;
-}
-
-function iconMarkup(app){
-  if(app.icon && app.icon.startsWith("http")){
-    return `<img src="${app.icon}" alt="${app.name} icon" onerror="this.parentElement.innerHTML='${defaultIcon().replace(/'/g,"&#39;")}'">`;
-  }
-  return app.icon==="capcut" ? capcutIcon() : defaultIcon();
-}
-
-function render(){
-  const q=search.value.trim().toLowerCase();
-  const filtered=apps.filter(app=>{
-    const matchesFilter=activeFilter==="all" || app.category===activeFilter;
-    const text=(app.name+" "+app.description+" "+app.features.join(" ")).toLowerCase();
-    return matchesFilter && text.includes(q);
-  });
-
-  grid.innerHTML=filtered.map(app=>`
-    <article class="card">
-      <div class="app-head">
-        <div class="icon">${iconMarkup(app)}</div>
-        <div>
-          <div class="app-name">${app.name}</div>
-          <div class="category">${app.categoryLabel}</div>
+        <div class="hero-preview reveal delayed" aria-hidden="true">
+          <div class="floating-orb"></div>
+          <div class="preview-device">
+            <div class="device-top"></div>
+            <div class="mini-label">YASIR APPS</div>
+            <div class="mini-title">Discover<br>something new.</div>
+            <div class="mini-card">
+              <div class="mini-icon">
+                <img src="assets/icons/yasir-capcut.svg" alt="">
+              </div>
+              <div>
+                <div class="text-sm font-bold">Yasir Capcut</div>
+                <div class="text-xs text-zinc-500">Video Editor · v1.0</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="desc">${app.description}</p>
-      <div class="features">
-        ${app.features.map(f=>`<span class="feature">✓ ${f}</span>`).join("")}
+    </section>
+
+    <section id="apps" class="mx-auto max-w-7xl scroll-mt-24 px-5 pb-24 sm:px-8">
+      <div class="mb-7 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <div class="section-kicker">APPLICATIONS</div>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Explore apps</h2>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <label class="search-wrap">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="Search apps…" autocomplete="off">
+          </label>
+          <div class="filter-row" role="group" aria-label="Filter apps">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="video">Video</button>
+            <button class="filter-button" data-filter="tools">Tools</button>
+            <button class="filter-button" data-filter="other">Other</button>
+          </div>
+        </div>
       </div>
-      <div class="meta"><span>Developer: Yasir</span><span>${app.version}</span></div>
-      <a class="download" href="${app.download}" data-name="${app.name}">
-        ↓&nbsp; Download APK
-      </a>
-    </article>
-  `).join("");
 
-  empty.style.display=filtered.length ? "none" : "block";
-}
+      <div id="appGrid" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
 
-document.querySelectorAll(".filter").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    activeFilter=btn.dataset.filter;
-    render();
-  });
-});
+      <div id="emptyState" class="empty-state hidden">
+        <div class="mx-auto max-w-md">
+          <div class="empty-icon">⌕</div>
+          <h3 class="mt-4 text-lg font-bold">No apps found</h3>
+          <p class="mt-2 text-sm text-zinc-500">Try another search or filter.</p>
+        </div>
+      </div>
+    </section>
 
-search.addEventListener("input",render);
+    <section id="about" class="border-y border-white/[.06] bg-white/[.015]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+        <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+          <div>
+            <div class="section-kicker">ABOUT</div>
+            <h2 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Built for future releases.</h2>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <article class="info-card">
+              <span class="info-number">01</span>
+              <h3>Fast</h3>
+              <p>Lightweight interactions and restrained motion keep the page responsive.</p>
+            </article>
+            <article class="info-card">
+              <span class="info-number">02</span>
+              <h3>Scalable</h3>
+              <p>Apps are stored in one JavaScript catalog so future releases are simple to add.</p>
+            </article>
+            <article class="info-card">
+              <span class="info-number">03</span>
+              <h3>GitHub ready</h3>
+              <p>Designed for a root GitHub Pages deployment with a clean, predictable file structure.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-grid.addEventListener("click",e=>{
-  const link=e.target.closest(".download");
-  if(!link)return;
-  toast.textContent="Opening "+link.dataset.name+" download…";
-  toast.classList.add("show");
-  setTimeout(()=>toast.classList.remove("show"),2200);
-});
+  <footer class="mx-auto max-w-7xl px-5 py-8 text-center text-xs text-zinc-600 sm:px-8">
+    © <span id="year"></span> Yasir Apps
+  </footer>
 
-document.getElementById("year").textContent=new Date().getFullYear();
-render();
-</script>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
 </body>
 </html>
