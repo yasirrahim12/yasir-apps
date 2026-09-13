@@ -18,7 +18,7 @@ const APPS = [
   badge: "New",
   description: "Yasir Game Hub — the latest public release.",
   features: ["Android", "Latest Release"],
-  icon: "assets/icons/yasir-game-hub.svg",
+  icon: "assets/icons/yasir-game-hub.png",
   download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v.2.0/yasir_game_hub.apk"
 }
 ];
