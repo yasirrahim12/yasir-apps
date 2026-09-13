@@ -9,7 +9,18 @@ const APPS = [
     features: ["Full Pro Unlocked", "No VPN Required", "Latest Version", "All Options Available"],
     icon: "assets/icons/yasir-capcut.svg",
     download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v1.0/Yasir.apk"
-  }
+  },
+  {
+  name: "Yasir Game Hub",
+  category: "other",
+  categoryLabel: "Game Hub",
+  version: "v.2.0",
+  badge: "New",
+  description: "Yasir Game Hub — the latest public release.",
+  features: ["Android", "Latest Release"],
+  icon: "assets/icons/yasir-game-hub.svg",
+  download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v.2.0/yasir_game_hub.apk"
+}
 ];
 
 const appGrid = document.querySelector("#appGrid");
