@@ -1,52 +1,62 @@
-# Yasir Apps
+# Yasir Apps — Pro GitHub Pages Store
 
-A GitHub Pages-ready app store website for apps published by Yasir.
+## Root structure
 
-## Files
+Keep these files at the repository root:
 
-- `index.html` — page structure, SEO metadata, Tailwind CDN setup, and content sections.
-- `style.css` — custom visual design, responsive layout, and lightweight animations.
-- `script.js` — app catalog, search, filters, and download interactions.
-- `assets/icons/yasir-capcut.svg` — local app icon, so the first card does not depend on an external image.
-- `assets/favicon.svg` — site favicon.
-- `site.webmanifest` — basic install metadata for supported browsers.
-- `robots.txt` — crawler rules and sitemap location.
-- `sitemap.xml` — sitemap-ready root URL.
+- `index.html`
+- `style.css`
+- `script.js`
+- `site.webmanifest`
+- `robots.txt`
+- `sitemap.xml`
+- `404.html` (optional fallback page)
+- `assets/favicon.png`
+- `assets/og-image.png`
+- `assets/icons/yasir-capcut.svg`
+- `assets/icons/yasir-game-hub.png`
 
-## GitHub Pages
+## Add future apps
 
-Upload the contents of this folder to the root of the `yasir-apps` repository, then enable GitHub Pages from the repository's Pages settings using the repository branch as the source.
-
-Expected site URL:
-
-https://yasirrahim12.github.io/yasir-apps/
-
-## Add another app later
-
-Open `script.js` and add another object inside `APPS`. Keep the same fields:
-
-- `name`
-- `category`
-- `categoryLabel`
-- `version`
-- `badge`
-- `description`
-- `features`
-- `icon`
-- `download`
+Open `script.js` and add a new object inside `APPS`.
 
 Example:
 
 {
-  name: "Your Next App",
+  name: "Your App",
   category: "tools",
   categoryLabel: "Tool",
+  platform: "Android",
   version: "v1.0",
   badge: "New",
-  description: "Your real app description.",
+  description: "A real description of the app.",
   features: ["Feature 1", "Feature 2"],
-  icon: "assets/icons/your-app.svg",
-  download: "YOUR-REAL-DOWNLOAD-LINK"
+  icon: "assets/icons/your-app.png",
+  download: "https://example.com/real.apk"
 }
 
-Only use real app information and real download links.
+The interface automatically handles cards, search, filtering, sorting, details, stats, and download buttons.
+
+## SEO
+
+The project includes:
+- canonical URL
+- title and meta description
+- robots directives
+- Google Search Console verification tag
+- Open Graph and Twitter metadata
+- stable PNG favicon at `assets/favicon.png`
+- `robots.txt`
+- `sitemap.xml`
+- WebSite / Organization / Person / ItemList JSON-LD
+- semantic headings and crawlable fallback text
+- social sharing preview image
+
+## GitHub Pages
+
+Upload the contents of this folder to the root of the repository, then use GitHub Pages with the `main` branch as the source if that is how your repository is configured.
+
+Site:
+https://yasirrahim12.github.io/yasir-apps/
+
+Important: do not add fake ratings, fake download numbers, fake reviews, or unsupported claims. Add only real app information and real release links.

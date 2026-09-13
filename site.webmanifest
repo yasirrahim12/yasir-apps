@@ -1,12 +1,18 @@
 {
   "name": "Yasir Apps",
   "short_name": "Yasir Apps",
-  "description": "App store for apps published by Yasir.",
+  "description": "App store for Android apps published by Yasir.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#070707",
-  "theme_color": "#070707",
+  "background_color": "#06070b",
+  "theme_color": "#06070b",
   "icons": [
-    {"src":"assets/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+    {
+      "src": "assets/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
