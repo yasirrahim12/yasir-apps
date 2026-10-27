@@ -1,3 +1,4 @@
+
 const APPS = [
   {
     name: "Yasir Capcut",
@@ -7,7 +8,12 @@ const APPS = [
     version: "v1.0",
     badge: "New",
     description: "A mobile video-editing app published by Yasir.",
-    features: ["Full Pro Unlocked", "No VPN Required", "Latest Version", "All Options Available"],
+    features: [
+      "Full Pro Unlocked",
+      "No VPN Required",
+      "Latest Version",
+      "All Options Available"
+    ],
     icon: "assets/icons/yasir-capcut.svg",
     download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v1.0/Yasir.apk"
   },
@@ -22,30 +28,30 @@ const APPS = [
     features: ["Android", "Latest Release"],
     icon: "assets/icons/yasir-game-hub.png",
     download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v.2.0/yasir_game_hub.apk"
+  },
+  {
+    name: "Yasir Termux",
+    category: "tools",
+    categoryLabel: "Tool",
+    platform: "Android",
+    version: "v0.118.3",
+    badge: "New",
+    description: "Yasir Termux brings a Linux-like command-line environment to Android for programming, scripting, Linux learning, and cybersecurity education. Explore terminal commands, install packages, use Python and Git, manage files, and practise command-line workflows. Basic terminal functionality does not require root access.",
+    features: [
+      "Linux-like terminal environment",
+      "Install packages using APT",
+      "Python and shell scripting",
+      "Git version control support",
+      "SSH and remote server workflows",
+      "Command-line file management",
+      "Linux and cybersecurity learning",
+      "Run terminal commands on Android"
+    ],
+    icon: "assets/icons/termux.png",
+    download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v3.2.1/termux-app_v0.118.3+github-debug_arm64-v8a.apk"
   }
-
-{
-  name: "Yasir Termux",
-  category: "tools",
-  categoryLabel: "Tool",
-  platform: "Android",
-  version: "v0.118.3",
-  badge: "New",
-  description: "Yasir Termux brings a powerful Linux-like command-line environment to Android. It is designed for programmers, developers, Linux learners, and cybersecurity students who want to explore terminal commands and development tools on their mobile devices. Install packages, write scripts, use Git, work with Python, manage files, and practice command-line workflows. Termux does not require root access for basic terminal functionality.",
-  features: [
-    "Linux-like terminal environment",
-    "Install packages using APT",
-    "Python and shell scripting",
-    "Git version control support",
-    "SSH and remote server workflows",
-    "Command-line file management",
-    "Learn Linux and cybersecurity fundamentals",
-    "Run terminal commands on Android"
-  ],
-  icon: "assets/icons/termux.png",
-  download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v3.2.1/termux-app_v0.118.3+github-debug_arm64-v8a.apk"
-}
 ];
+
 
 /* Future apps are added only to APPS.
    The cards, search, filters, sorting, stats and detail modal update automatically. */
