@@ -23,6 +23,28 @@ const APPS = [
     icon: "assets/icons/yasir-game-hub.png",
     download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v.2.0/yasir_game_hub.apk"
   }
+
+{
+  name: "Yasir Termux",
+  category: "tools",
+  categoryLabel: "Tool",
+  platform: "Android",
+  version: "v0.118.3",
+  badge: "New",
+  description: "Yasir Termux brings a powerful Linux-like command-line environment to Android. It is designed for programmers, developers, Linux learners, and cybersecurity students who want to explore terminal commands and development tools on their mobile devices. Install packages, write scripts, use Git, work with Python, manage files, and practice command-line workflows. Termux does not require root access for basic terminal functionality.",
+  features: [
+    "Linux-like terminal environment",
+    "Install packages using APT",
+    "Python and shell scripting",
+    "Git version control support",
+    "SSH and remote server workflows",
+    "Command-line file management",
+    "Learn Linux and cybersecurity fundamentals",
+    "Run terminal commands on Android"
+  ],
+  icon: "assets/icons/termux.png",
+  download: "https://github.com/yasirrahim12/yasir-apps/releases/download/v3.2.1/termux-app_v0.118.3+github-debug_arm64-v8a.apk"
+}
 ];
 
 /* Future apps are added only to APPS.
